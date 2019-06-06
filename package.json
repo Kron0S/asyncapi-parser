@@ -1,6 +1,6 @@
 {
   "name": "asyncapi-parser",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The AsyncAPI parser. It can generate yaml spec",
   "main": "./lib/parser.js",
   "bin": {
