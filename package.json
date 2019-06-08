@@ -1,5 +1,5 @@
 {
-  "name": "asyncapi-parser",
+  "name": "@kron0s/asyncapi-parser",
   "version": "0.1.0",
   "description": "The AsyncAPI parser. It can generate yaml spec",
   "main": "./lib/parser.js",
