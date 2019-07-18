@@ -26,12 +26,13 @@ program
   .version(packageInfo.version, '-v, --version')
   .option('-o, --output <outputFile>', 'File where to put the spec', resolveDir, 'spec.yaml')
   .option('-i, --input <inputDir>', 'directory where source code are located', resolveDir, './')
+  .option('-r, --regexp <regexp>', '', '\/\*\* @asyncApi.*?\*\/')
   .parse(process.argv);
 
 
-async function prep(output, input) {
+async function prep({output, input, regexp}) {
 	try {
-		const spec = await parse({input: input})
+		const spec = await parse({input, regexp})
 		await fs_writeFilePromise(output, spec);
 	} catch(err) {
 		showErrorAndExit(err);
@@ -40,6 +41,6 @@ async function prep(output, input) {
 	console.log(yellow('Check out your shiny new generated file at ') + magenta(output) + yellow('.'));
 }
 
-prep(program.output, program.input)
+prep(program)
 
 process.on('unhandledRejection', showErrorAndExit);
